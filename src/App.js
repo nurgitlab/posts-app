@@ -1,12 +1,12 @@
-import React from "react"
-import FetchedPosts from "./components/FetchedPosts"
+import React from 'react'
+import FetchedPosts from './components/FetchedPosts'
 import PostForm from './components/PostForm'
-import Posts from "./components/Posts"
-
+import Posts from './components/Posts'
 
 function App() {
   return (
     <div className="container pt-3">
+
         <div className="row">
           <div className="col">
               <PostForm />
@@ -16,15 +16,14 @@ function App() {
         <div className="row">
           <div className="col">
             <h2>Синхронные посты</h2>
-            <Posts posts={[]}/>
+              <Posts posts={[]}/>
           </div>
 
           <div className="col">
             <h2>Асинхронные посты</h2>
-            <FetchedPosts posts={[]}/>
+              <FetchedPosts posts={[]}/>
           </div>
         </div>
-
 
     </div>
   );
