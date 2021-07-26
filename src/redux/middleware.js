@@ -9,7 +9,7 @@ export function forbiddenWordsMiddleware({dispatch}){
             if (action.type === CREATE_POST){
                 const found = forbidden.filter(w=>action.payload.title.includes(w))
                 if (found.length){
-                    return dispatch(showAlert('Пишов нахуй'))
+                    return dispatch(showAlert('Мы вам не рады.'))
                 }
             }
             return next(action)

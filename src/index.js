@@ -7,10 +7,17 @@ import {Provider} from 'react-redux'
 import {rootReducer} from './redux/rootReducer'
 import thunk from 'redux-thunk'
 import {forbiddenWordsMiddleware} from './redux/middleware'
+import createSagaMiddleware from 'redux-saga'
+import { sagaWatcher } from './redux/sagas'
 
+const saga=createSagaMiddleware()
 
+const store = createStore(
+  rootReducer, 
+  applyMiddleware(thunk, forbiddenWordsMiddleware,saga)
+  );
 
-const store = createStore(rootReducer, applyMiddleware(thunk, forbiddenWordsMiddleware));
+  saga.run(sagaWatcher)
 
 const app = (
   <Provider store={store}>
