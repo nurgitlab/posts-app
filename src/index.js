@@ -1,29 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
-import {compose, createStore, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
-import {rootReducer} from './redux/rootReducer'
-import thunk from 'redux-thunk'
-import {forbiddenWordsMiddleware} from './redux/middleware'
-import createSagaMiddleware from 'redux-saga'
-import { sagaWatcher } from './redux/sagas'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { rootReducer } from './redux/rootReducer';
+import thunk from 'redux-thunk';
+import { forbiddenWordsMiddleware } from './redux/middleware';
+import createSagaMiddleware from 'redux-saga';
+import { sagaWatcher } from './redux/sagas';
 
-const saga=createSagaMiddleware()
+
+const saga = createSagaMiddleware();
 
 const store = createStore(
-  rootReducer, 
-  applyMiddleware(thunk, forbiddenWordsMiddleware,saga)
-  );
+  rootReducer,
+  applyMiddleware(thunk, forbiddenWordsMiddleware, saga)
+);
 
-  saga.run(sagaWatcher)
+saga.run(sagaWatcher);
 
 const app = (
   <Provider store={store}>
-    <App />
+    <App/>
   </Provider>
-)
+);
 
 ReactDOM.render(
   app,
